@@ -43,6 +43,7 @@ class BoxAnnotator:
         detections: Detections,
         labels: Optional[List[str]] = None,
         skip_label: bool = False,
+        font: int = cv2.FONT_HERSHEY_SIMPLEX,
     ) -> np.ndarray:
         """
         Draws bounding boxes on the frame using the detections provided.
@@ -55,7 +56,6 @@ class BoxAnnotator:
         Returns:
             np.ndarray: The image with the bounding boxes drawn on it
         """
-        font = cv2.FONT_HERSHEY_SIMPLEX
         for i in range(len(detections)):
             x1, y1, x2, y2 = detections.xyxy[i].astype(int)
             class_id = (
